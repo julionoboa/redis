@@ -1,0 +1,15 @@
+import redis
+import time
+
+
+
+r = redis.Redis(
+  host='redis-16995.c270.us-east-1-3.ec2.redns.redis-cloud.com:16995',
+  port=16314,
+  password='prOFmOApFvJuC7rGWHGrquDikx2YQebV')
+
+while True:
+    message = input("Insert message: ")
+    r.publish('test_channel', message)
+    print(f"Published message: {message}")
+    time.sleep(1)
